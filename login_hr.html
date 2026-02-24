@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-6">
+    <div class="card p-4">
+      <h4 class="mb-3">HR Login</h4>
+      <form method="post">
+        <label class="form-label">Username</label>
+        <input class="form-control mb-2" name="username" />
+        <label class="form-label">Password</label>
+        <input type="password" class="form-control mb-3" name="password" />
+        <button class="btn btn-primary w-100">Login</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h3>HR Dashboard</h3>
+  <a href="{{ url_for('hr_add_job') }}" class="btn btn-success">+ Add Job</a>
+</div>
+
+<div class="row mb-3">
+  <div class="col-md-6">
+    <div class="card p-3 mb-3">
+      <h5>Jobs Posted</h5>
+      <p>{{ stats.jobs_count }} jobs</p>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="card p-3 mb-3">
+      <h5>Applications</h5>
+      <p>{{ stats.applications_count }} total</p>
+    </div>
+  </div>
+</div>
+
+<h5>All Jobs</h5>
+<table class="table">
+  <thead><tr><th>ID</th><th>Title</th><th>Description</th></tr></thead>
+  <tbody>
+    {% for job in jobs %}
+      <tr><td>{{ job.id }}</td><td>{{ job.title }}</td><td>{{ job.description }}</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

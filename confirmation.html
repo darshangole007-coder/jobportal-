@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="alert alert-success p-4 text-center">
+  <h4>Application Submitted</h4>
+  <p>Thanks — HR will contact you shortly if your application matches their needs.</p>
+  <a href="{{ url_for('employee_home') }}" class="btn btn-primary">Back to Home</a>
+</div>
+{% endblock %}

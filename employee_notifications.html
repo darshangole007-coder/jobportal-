@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<h4>Your Notifications</h4>
+<ul class="list-group">
+  {% for n in notifications %}
+    <li class="list-group-item">
+      <div>{{ n.message }}</div>
+      <small class="text-muted">{{ n.created_at }}</small>
+    </li>
+  {% endfor %}
+</ul>
+{% endblock %}

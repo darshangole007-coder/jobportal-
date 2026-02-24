@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<h4>Welcome, {{ name }}</h4>
+
+<div class="mb-3">
+  <a href="{{ url_for('add_skills') }}" class="btn btn-secondary">Add Skills</a>
+  <a href="{{ url_for('employee_notifications') }}" class="btn btn-warning">Notifications</a>
+</div>
+
+<h5>Available Jobs</h5>
+<table class="table">
+  <thead><tr><th>Title</th><th>Description</th><th></th></tr></thead>
+  <tbody>
+    {% for job in jobs %}
+      <tr>
+        <td>{{ job.title }}</td>
+        <td>{{ job.description }}</td>
+        <td><a class="btn btn-sm btn-primary" href="{{ url_for('apply', job_id=job.id) }}">Apply</a></td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

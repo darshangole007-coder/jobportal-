@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-8">
+    <div class="card p-4">
+      <h4>Add Skills</h4>
+      <form method="post">
+        <label class="form-label">Skills (comma separated)</label>
+        <input class="form-control mb-3" name="skills" />
+        <button class="btn btn-success">Save</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

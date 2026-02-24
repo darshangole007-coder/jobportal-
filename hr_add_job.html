@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-8">
+    <div class="card p-4">
+      <h4>Add Job</h4>
+      <form method="post">
+        <label class="form-label">Title</label>
+        <input class="form-control mb-2" name="title" required>
+        <label class="form-label">Description</label>
+        <textarea class="form-control mb-3" name="description" rows="5" required></textarea>
+        <button class="btn btn-primary">Post Job</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% block title %}HR – Applications{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+
+    <h2 class="mb-4 text-primary">Job Applications</h2>
+
+    {% if applications|length == 0 %}
+        <div class="alert alert-info">No applications received yet.</div>
+    {% else %}
+
+    <div class="table-responsive">
+        <table class="table table-hover table-bordered align-middle shadow-sm">
+            <thead class="table-primary">
+                <tr>
+                    <th>Applicant</th>
+                    <th>Email</th>
+                    <th>Skills</th>
+                    <th>Job Applied For</th>
+                    <th>Resume</th>
+                    <th>Cover Message</th>
+                    <th>Applied On</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for app in applications %}
+                <tr>
+                    <td><strong>{{ app.employee_name }}</strong></td>
+                    <td>{{ app.employee_email }}</td>
+
+                    <td>
+                        {% set skills = app.employee_skills.split(",") if app.employee_skills else [] %}
+                        {% if skills %}
+                            {% for s in skills %}
+                                <span class="badge bg-info text-dark me-1">{{ s }}</span>
+                            {% endfor %}
+                        {% else %}
+                            <span class="text-muted">No skills added</span>
+                        {% endif %}
+                    </td>
+
+                    <td>
+                        <strong>{{ app.job_title }}</strong>
+                    </td>
+
+                    <td>
+                        {% if app.resume_filename %}
+                            <a href="{{ url_for('download_resume', filename=app.resume_filename) }}" class="btn btn-sm btn-success">
+                                Download Resume
+                            </a>
+                        {% else %}
+                            <span class="text-muted">No resume</span>
+                        {% endif %}
+                    </td>
+
+                    <td style="max-width: 250px;">
+                        {% if app.cover_message %}
+                            {{ app.cover_message }}
+                        {% else %}
+                            <span class="text-muted">No message</span>
+                        {% endif %}
+                    </td>
+
+                    <td>{{ app.applied_at.replace("T", " ").split(".")[0] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    {% endif %}
+
+</div>
+{% endblock %}
